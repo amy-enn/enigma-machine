@@ -47,21 +47,26 @@ export default function App() {
 
 
   return (
-    <div style={{ maxWidth: 900, margin: "0 auto", padding: 24 }}>
-      <h1>Enigma with Typescript</h1>
+    <div className="enigma-wrap">
+      <div className="enigma-panel">
+        <h1 className="enigma-title">Enigma with Typescript</h1>
 
-      <div style={{ marginBottom: 12, opacity: 0.8 }}>
-        Rotor positions (R, M, L): {r} {m} {l}
-      </div>
+        <p className="sub">
+          Rotor positions (R, M, L): {r} {m} {l}
+        </p>
+        <div className="brass-rule" />
 
-      <Lampboard lit={lit} />
+        <div className="grid">
+          <Lampboard lit={lit} />
 
-      <Keyboard onPress={handlePress} />
+          <Keyboard onPress={handlePress} />
 
-      <div style={{ marginTop: 18, display: "flex", gap: 12, alignItems: "center" }}>
-        <button onClick={handleReset}>Reset</button>
-        <div style={{ fontFamily: "monospace", overflowWrap: "anywhere" }}>
-          {ciphertext}
+          <div className="output-row">
+            <button className="reset-btn" onClick={handleReset}>Reset</button>
+            <div className="cipher">
+              {ciphertext}
+            </div>
+          </div>
         </div>
       </div>
     </div>
