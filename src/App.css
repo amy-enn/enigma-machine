@@ -120,10 +120,33 @@ button {
   border-radius: 8px;
 }
 
-.cipher {
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-  color: rgba(255, 255, 255, 0.92);
-  opacity: 0.9;
+.io {
+  display: grid;
+  gap: 8px;
+  flex: 1;
+  padding: 10px 12px;
+  border-radius: 14px;
+  border: 1px solid rgba(185, 145, 74, 0.20);
+  background: linear-gradient(180deg, rgba(14, 12, 10, 0.75), rgba(10, 9, 8, 0.75));
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+.io-line {
+  display: grid;
+  grid-template-columns: 70px 1fr;
+  align-items: baseline;
+  gap: 10px;
+}
+
+.io-label {
+  color: rgba(185, 145, 74, 0.75);
+  letter-spacing: 0.14em;
+  font-size: 12px;
+}
+
+.io-text {
+  color: rgba(255, 255, 255, 0.90);
+  opacity: 0.95;
   overflow-wrap: anywhere;
 }
 

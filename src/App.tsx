@@ -15,6 +15,7 @@ export default function App() {
   const [lit, setLit] = useState<string | null>(null);
   const [ciphertext, setCiphertext] = useState("");
   const [positions, setPositions] = useState<[number, number, number]>([0, 0, 0]);
+  const [plaintext, setPlaintext] = useState("");
 
   const machineRef = useRef(
     new EnigmaMachine(
@@ -25,6 +26,7 @@ export default function App() {
   );
 
   function handlePress(letter: string) {
+    setPlaintext((prev) => prev + letter);
     const out = machineRef.current.pressKey(letter);
     setLit(out);
     setCiphertext((prev) => prev + out);
@@ -36,6 +38,7 @@ export default function App() {
 
   function handleReset() {
     setLit(null);
+    setPlaintext("");
     setCiphertext("");
     machineRef.current.setRotorPositions([0, 0, 0]);
 
@@ -49,7 +52,7 @@ export default function App() {
   return (
     <div className="enigma-wrap">
       <div className="enigma-panel">
-        <h1 className="enigma-title">Enigma with Typescript</h1>
+        <h1 className="enigma-title">• • • Enigma • • •</h1>
 
         <p className="sub">
           Rotor positions (R, M, L): {r} {m} {l}
@@ -63,8 +66,17 @@ export default function App() {
 
           <div className="output-row">
             <button className="reset-btn" onClick={handleReset}>Reset</button>
-            <div className="cipher">
-              {ciphertext}
+
+            <div className="io">
+              <div className="io-line">
+                <span className="io-label">PLAIN</span>
+                <span className="io-text">{plaintext}</span>
+              </div>
+
+              <div className="io-line">
+                <span className="io-label">CIPHER</span>
+                <span className="io-text">{ciphertext}</span>
+              </div>
             </div>
           </div>
         </div>
