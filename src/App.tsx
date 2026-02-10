@@ -8,6 +8,7 @@ import { EnigmaMachine } from './enigma/machine';
 import { Rotor } from './enigma/rotor';
 import { Reflector } from './enigma/reflector';
 import { Plugboard } from './enigma/plugboard';
+import { RotorWheels } from './components/RotorWheels';
 import { ROTOR_I, ROTOR_II, ROTOR_III, REFLECTOR_B } from './enigma/constants';
 
 
@@ -25,8 +26,14 @@ export default function App() {
     )
   );
 
+  function applyPositions(next: [number, number, number]) {
+    setPositions(next);
+    machineRef.current.setRotorPositions(next); // [r, m, l]
+  }
+
   function handlePress(letter: string) {
     setPlaintext((prev) => prev + letter);
+
     const out = machineRef.current.pressKey(letter);
     setLit(out);
     setCiphertext((prev) => prev + out);
@@ -40,7 +47,8 @@ export default function App() {
     setLit(null);
     setPlaintext("");
     setCiphertext("");
-    machineRef.current.setRotorPositions([0, 0, 0]);
+    // machineRef.current.setRotorPositions([0, 0, 0]);
+    applyPositions([0, 0, 0]);
 
     // keep UI in sync
     setPositions([0, 0, 0]);
@@ -58,6 +66,8 @@ export default function App() {
           Rotor positions (R, M, L): {r} {m} {l}
         </p>
         <div className="brass-rule" />
+
+        <RotorWheels positions={positions} onChange={applyPositions} />
 
         <div className="grid">
           <Lampboard lit={lit} />

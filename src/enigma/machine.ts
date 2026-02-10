@@ -52,6 +52,5 @@ export class EnigmaMachine {
         positions.forEach((p, i) => {
             if (this.rotors[i]) this.rotors[i]!.position = ((p % 26) + 26) % 26;
         });
-
     }
 }

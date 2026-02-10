@@ -214,3 +214,75 @@ button {
     inset 0 1px 0 rgba(255, 255, 255, 0.35),
     inset 0 -10px 18px rgba(90, 45, 0, 0.35);
 }
+
+.wheels {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  margin-bottom: 18px;
+}
+
+.wheel {
+  border-radius: 18px;
+  padding: 14px 12px;
+  border: 1px solid rgba(185, 145, 74, 0.22);
+  background:
+    radial-gradient(180px 140px at 20% 10%, rgba(255, 255, 255, 0.07), transparent 60%),
+    linear-gradient(180deg, rgba(18, 15, 11, 0.9), rgba(10, 9, 8, 0.9));
+  box-shadow:
+    0 16px 34px rgba(0, 0, 0, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  display: grid;
+  justify-items: center;
+  gap: 10px;
+}
+
+.wheel-label {
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  color: rgba(185, 145, 74, 0.8);
+}
+
+.wheel-btn {
+  width: 100%;
+  border-radius: 12px;
+  padding: 10px 0;
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  background:
+    linear-gradient(180deg, rgba(20, 20, 20, 0.9), rgba(8, 8, 8, 0.9));
+  color: rgba(255, 255, 255, 0.75);
+  cursor: pointer;
+  box-shadow:
+    0 10px 20px rgba(0, 0, 0, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+.wheel-btn:hover {
+  border-color: rgba(185, 145, 74, 0.35);
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.wheel-window {
+  width: 100%;
+  border-radius: 14px;
+  border: 1px solid rgba(185, 145, 74, 0.25);
+  background:
+    radial-gradient(100px 70px at 50% 35%, rgba(255, 235, 190, 0.14), transparent 65%),
+    linear-gradient(180deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.65));
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.06),
+    inset 0 -12px 20px rgba(0, 0, 0, 0.6);
+  padding: 14px 0;
+  display: grid;
+  place-items: center;
+}
+
+.wheel-letter {
+  font-size: 26px;
+  letter-spacing: 0.18em;
+  color: rgba(255, 226, 155, 0.95);
+  text-shadow:
+    0 0 12px rgba(255, 196, 120, 0.25),
+    0 0 26px rgba(255, 196, 120, 0.12);
+}
+
