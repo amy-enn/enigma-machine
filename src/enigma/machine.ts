@@ -16,7 +16,17 @@ export class EnigmaMachine {
 
     // do the simplest stepping rule to start...
     private stepRotors(): void {
-        this.rotors[0]?.step();
+        const right = this.rotors[0]!;
+        const middle = this.rotors[1]!;
+        const left = this.rotors[2];
+
+        // decide stepping based on CURRENT positions (before stepping)
+        const stepMiddle = right.atNotch() || middle.atNotch();
+        const stepLeft = middle.atNotch();
+
+        if (stepLeft) left.step();
+        if (stepMiddle) middle.step();
+        right.step();
     }
 
     pressKey(c: string): string {

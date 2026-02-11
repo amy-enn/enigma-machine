@@ -9,7 +9,7 @@ import { Rotor } from './enigma/rotor';
 import { Reflector } from './enigma/reflector';
 import { Plugboard } from './enigma/plugboard';
 import { RotorWheels } from './components/RotorWheels';
-import { ROTOR_I, ROTOR_II, ROTOR_III, REFLECTOR_B } from './enigma/constants';
+import { ROTOR_I, ROTOR_II, ROTOR_III, REFLECTOR_B, NOTCH_I, NOTCH_II, NOTCH_III } from './enigma/constants';
 
 
 export default function App() {
@@ -20,7 +20,11 @@ export default function App() {
 
   const machineRef = useRef(
     new EnigmaMachine(
-      [new Rotor(ROTOR_III), new Rotor(ROTOR_II), new Rotor(ROTOR_I)],
+      [
+        new Rotor(ROTOR_III, NOTCH_III),
+        new Rotor(ROTOR_II, NOTCH_II),
+        new Rotor(ROTOR_I, NOTCH_I)
+      ],
       new Reflector(REFLECTOR_B),
       new Plugboard()
     )
@@ -63,7 +67,7 @@ export default function App() {
         <h1 className="enigma-title">• • • Enigma • • •</h1>
 
         <p className="sub">
-          Rotor positions (R, M, L): {r} {m} {l}
+          Rotor positions (L, M, R): {l} {m} {r}
         </p>
         <div className="brass-rule" />
 
@@ -79,14 +83,17 @@ export default function App() {
 
             <div className="io">
               <div className="io-line">
-                <span className="io-label">PLAIN</span>
+                <span className="io-label">PLAIN:</span>
                 <span className="io-text">{plaintext}</span>
               </div>
 
               <div className="io-line">
-                <span className="io-label">CIPHER</span>
+                <span className="io-label">CIPHER:</span>
                 <span className="io-text">{ciphertext}</span>
               </div>
+              <p className="sub">
+                Note: Letters only. Original Enigma machines did not employ spaces, numbers, or punctuation.
+              </p>
             </div>
           </div>
         </div>

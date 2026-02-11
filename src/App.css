@@ -286,3 +286,9 @@ button {
     0 0 26px rgba(255, 196, 120, 0.12);
 }
 
+.sub {
+  font-size: .6rem;
+  font-style: italic;
+  margin-top: 1rem;
+  margin-bottom: 0;
+}
